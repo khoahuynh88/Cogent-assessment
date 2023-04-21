@@ -13,8 +13,8 @@ export class UserService {
     return this.http.post(`${this.url}`, user);
   }
 
-  updateUser( value: any): Observable<Object> {
-    return this.http.put(`${this.url}`, value);
+  updateUser( user: User): Observable<User> {
+    return this.http.put<User>(`${this.url}/${user.id}`, user);
   }
 
   deleteUser(id: number): Observable<any> {

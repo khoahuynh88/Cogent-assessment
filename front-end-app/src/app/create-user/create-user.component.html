@@ -12,6 +12,7 @@
     <input type="text" [(ngModel)]="user.salary" name="salary" required>
   </div>
   <button [disabled]="loginform.invalid" type="submit">Submit</button>
+  <button type="reset">Reset</button>
 </form>
 
 <div [hidden]="!submitted">

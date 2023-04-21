@@ -19,7 +19,23 @@
             <td>{{emp.age}}</td>
             <td>{{emp.salary}}</td>
             <td><button (click)="deleteUser(emp.id)" >Delete</button>
-                <button style="margin-left: 10px">Update</button>
+                <button (click)="toggle()" style="margin-left: 10px">Update</button>
+                <form  *ngIf="showForm" novalidate #loginform='ngForm' (ngSubmit)="editUser(loginform.value) ">
+                    <input type="hidden" name="id" [(ngModel)]="emp.id">
+                    <div>
+                        <label for="Name"> Name</label>
+                        <input type="text" [(ngModel)]=" emp.name" name="name" required>
+                    </div>
+                    <div>
+                      <label for="Age">Age</label>
+                        <input type="number" [(ngModel)]="emp.age" name="age">
+                    </div>
+                    <div>
+                      <label for="Salary">Salary</label>
+                        <input type="number" [(ngModel)]="emp.salary" name="salary">
+                    </div>
+                    <button  (click)="toggle()" type="submit">Submit</button>
+                    </form>
             </td>
           </tr>
         </tbody>

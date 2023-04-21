@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-user',
@@ -10,6 +11,7 @@ import { UserService } from '../user.service';
 export class CreateUserComponent implements OnInit{
   user: User = new User();
   submitted = false;
+  login!: FormGroup;
 constructor(private es: UserService
     ) { }
 ngOnInit() {
@@ -27,5 +29,9 @@ save() {
 onSubmit(loginform:any) {
     this.submitted = true;
     this.save();    
+  }
+
+  reset(){
+    this.login.reset();
   }
 }

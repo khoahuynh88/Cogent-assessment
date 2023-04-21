@@ -10,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class UserListComponent implements OnInit {
   user!: Observable<User[]>;
-
+  showForm:boolean=false;
   constructor(private es: UserService
 ) {}
 
@@ -30,5 +30,17 @@ export class UserListComponent implements OnInit {
           this.reloadData();
         },
         error => console.log(error));
+  }
+
+  toggle(){
+    this.showForm=!this.showForm;
+  }
+  editUser(user:User){
+    console.log(user.id +""+ user.name);
+    this.es.updateUser(user).subscribe(()=>
+      {
+        this.reloadData();
+      }
+    );
   }
 }

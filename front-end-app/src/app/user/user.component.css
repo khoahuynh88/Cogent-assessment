@@ -1,0 +1,12 @@
+h1{
+    color: brown;
+    float:initial;
+}
+
+table , th,td {
+    background-color: antiquewhite;
+    font-size: larger;
+    border: 1px solid;
+    border-collapse: collapse;
+
+}

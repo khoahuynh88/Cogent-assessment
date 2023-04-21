@@ -1,0 +1,5 @@
+package cogent.infotech.com.repository;
+
+public interface UserRepository {
+
+}

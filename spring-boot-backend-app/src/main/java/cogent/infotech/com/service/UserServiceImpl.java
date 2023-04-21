@@ -21,11 +21,8 @@ public class UserServiceImpl implements UserService {
 		return repo.save(user);
 	}
 
-	@Override
-	public Optional<User> find(long userId) {
-		// TODO Auto-generated method stub
-		return repo.findById(userId);
-	}
+	
+	
 
 	@Override
 	public List<User> listall() {
@@ -33,9 +30,9 @@ public class UserServiceImpl implements UserService {
 		return (List<User>) repo.findAll();}
 
 	@Override
-	public void delete(User user) {
+	public void delete(long id) {
 		// TODO Auto-generated method stub
-		repo.delete(user);
+		repo.deleteById(id);;
 	}
 
 	@Override
@@ -43,5 +40,36 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		repo.deleteAll();
 	}
+
+
+
+
+
+
+
+
+	@Override
+	public User update(long id, User user) {
+		// TODO Auto-generated method stub
+		user.setId(id);
+		return repo.save(user);
+	}
+
+
+
+
+	@Override
+	public Optional<User> find(long userId) {
+		// TODO Auto-generated method stub
+		return repo.findById(userId);
+	}
+
+
+	
+
+		
+
+	
+	
 
 }

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,21 +41,27 @@ public class UserController {
 	
 	//List one book by id
 	@GetMapping("/user/{userId}")
-	public User get(@PathVariable("userId") Long id) {
+	public User get(@PathVariable("userId") long id) {
 		Optional<User> b = sv.find(id);
 		return b.get();
 	}
 	
-	@PutMapping("/book")
-	public User update(@RequestBody User user) {
-		return sv.save(user);
-	}
+	 @PutMapping("user/{id}")
+	    public ResponseEntity<User> updateMovie(@PathVariable long id, @RequestBody User user) {
+	        Optional<User> updatedUser =sv.find(id)
+	                .map(existingMovie -> sv.update(id, user));
+	        return updatedUser.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+	    }
 	
-	@DeleteMapping("/book")
-	public String delete (@RequestParam (value="id") Long id) {
-		Optional<User> b = sv.find(id);
-		sv.delete(b.get());
-		return "Book USer";
+	@DeleteMapping("/user/{id}")
+	public ResponseEntity<Void> deleteMovie(@PathVariable long id) {
+        Optional<User> user = sv.find(id);
+        if (user.isPresent()) {
+            sv.delete(id);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
 	}
 	
 }

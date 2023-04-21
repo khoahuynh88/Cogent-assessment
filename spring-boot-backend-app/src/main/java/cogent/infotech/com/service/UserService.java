@@ -10,7 +10,8 @@ public interface UserService {
 		public User save (User user);
 		public Optional<User> find (long userId);
 		public List<User> listall();
-		public void delete(User user);
+		public void delete(long  id);
 		public void deleteAll ();
+		public User update(long id, User user);
 	
 }

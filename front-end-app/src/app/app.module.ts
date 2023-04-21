@@ -3,16 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
-import {HttpClientModule} from '@angular/common/http'
+
+import {HttpClientModule} from '@angular/common/http';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { UpdateUserComponent } from './update-user/update-user.component'
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    CreateUserComponent,
+    UserListComponent,
+    UpdateUserComponent,
+   
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, HttpClientModule
+    AppRoutingModule, HttpClientModule,FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
